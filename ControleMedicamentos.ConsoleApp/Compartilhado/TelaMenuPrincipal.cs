@@ -1,5 +1,6 @@
 ﻿using ControleMedicamentos.ConsoleApp.ModuloFornecedor;
 using ControleMedicamentos.ConsoleApp.ModuloFuncionario;
+using ControleMedicamentos.ConsoleApp.ModuloMedicamento;
 using ControleMedicamentos.ConsoleApp.ModuloPaciente;
 using System;
 
@@ -15,6 +16,9 @@ namespace ControleMedicamentos.ConsoleApp.Compartilhado
 
         private RepositorioPaciente repositorioPaciente;
         private TelaCadastroPaciente telaCadastroPaciente;
+       
+        private RepositorioMedicamento repositorioMedicamento;
+        private TelaCadastroMedicamento telaCadastroMedicamento;
 
         public TelaMenuPrincipal(Notificador notificador)
         {
@@ -26,6 +30,9 @@ namespace ControleMedicamentos.ConsoleApp.Compartilhado
 
             repositorioPaciente = new RepositorioPaciente();
             telaCadastroPaciente = new TelaCadastroPaciente(repositorioPaciente, notificador);
+
+            repositorioMedicamento = new RepositorioMedicamento();
+            telaCadastroMedicamento = new TelaCadastroMedicamento(repositorioMedicamento, notificador);
         }
 
         public string MostrarOpcoes()
@@ -59,6 +66,9 @@ namespace ControleMedicamentos.ConsoleApp.Compartilhado
 
             else if (opcao == "2")
                 tela = telaCadastroFornecedor;
+
+            else if (opcao == "3")
+                tela = telaCadastroMedicamento;
 
             else if (opcao == "4")
                 tela = telaCadastroPaciente;
